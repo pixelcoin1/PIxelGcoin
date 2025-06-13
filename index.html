@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelG - Animated Background</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #000;
+      overflow-x: hidden;
+      color: #fff;
+      text-align: center;
+    }
+    .scene {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('pacman-bg.webp') center center no-repeat;
+      background-size: 400px;
+      animation: move 20s linear infinite;
+      opacity: 0.12;
+    }
+    @keyframes move {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      margin-top: 50px;
+    }
+    .content img {
+      width: 80px;
+      height: auto;
+    }
+    .content h1 {
+      font-size: 1.8rem;
+    }
+    .content p {
+      max-width: 360px;
+      margin: 0 auto 1rem;
+      font-size: 1rem;
+    }
+    .btn {
+      background-color: #00ffff;
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      margin: 0.3rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #33ffff;
+    }
+    .section {
+      background: rgba(0,0,0,0.6);
+      padding: 2rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      border-radius: 10px;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .social {
+      margin-top: 1rem;
+    }
+    .social a {
+      color: #00ffff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .social a.twitter-icon {
+      font-size: 1.4rem;
+      color: #1DA1F2;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene"></div>
+  <div class="content">
+    <img src="logo.png" alt="PixelG Logo" />
+    <h1>PixelG Token</h1>
+    <p id="description">PixelG is a gamer-centric BEP-20 token on Binance Smart Chain, designed to empower play-to-earn, game development funding, and build a strong gaming community.</p>
+    <button class="btn" onclick="window.open('https://pancakeswap.finance/swap?outputCurrency=0x600Fd6D03E5ad3C40a8FCf8cb70CdF589F617C8B','_blank')">Buy PXG on PancakeSwap</button>
+    <div style="margin-top: 1rem;">
+      <button class="btn" onclick="setLang('en')">English</button>
+      <button class="btn" onclick="setLang('de')">Deutsch</button>
+      <button class="btn" onclick="setLang('tr')">Türkçe</button>
+      <button class="btn" onclick="setLang('es')">Español</button>
+      <button class="btn" onclick="setLang('fr')">Français</button>
+      <button class="btn" onclick="setLang('ar')">العربية</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📊 Tokenomics</h2>
+    <p>Total Supply: 10,000,000 PXG</p>
+    <p>Liquidity: 60% | Development: 20% | Marketing: 10% | Airdrops: 10%</p>
+  </div>
+
+  <div class="section">
+    <h2>👥 Holder Count</h2>
+    <p id="holders">Loading holders...</p>
+  </div>
+
+  <div class="section">
+    <h2>📈 Live Chart</h2>
+    <iframe src="https://www.geckoterminal.com/bsc/pools/0x600Fd6D03E5ad3C40a8FCf8cb70CdF589F617C8B?embed=1" loading="lazy"></iframe>
+  </div>
+
+  <footer>
+    <div class="social">
+      <a href="https://bscscan.com/token/0x600Fd6D03E5ad3C40a8FCf8cb70CdF589F617C8B" target="_blank">View on BSCScan</a> |
+      <a href="https://x.com/PixelGcoin" target="_blank" class="twitter-icon"><i class="fab fa-x-twitter"></i> @PixelGcoin</a>
+    </div>
+    <p>Contract: 0x600Fd6D03E5ad3C40a8FCf8cb70CdF589F617C8B</p>
+    <p>© 2025 PixelG Project</p>
+  </footer>
+
+  <script>
+    const descriptions = {
+      en: "PixelG is a gamer-centric BEP-20 token on Binance Smart Chain, designed to empower play-to-earn, game development funding, and build a strong gaming community.",
+      de: "PixelG ist ein Gaming-orientierter BEP-20 Token auf der Binance Smart Chain, entwickelt zur Unterstützung von Play-to-Earn, Spieleentwicklung und Community-Aufbau.",
+      tr: "PixelG, oyun oynayarak kazanmayı, oyun geliştirmeyi ve güçlü bir topluluk oluşturmayı amaçlayan Binance Smart Chain üzerinde oyuncu odaklı bir BEP-20 tokendir.",
+      es: "PixelG es un token BEP-20 centrado en jugadores en Binance Smart Chain, diseñado para apoyar el play-to-earn, financiar desarrollo de juegos y construir comunidad.",
+      fr: "PixelG est un token BEP-20 dédié aux gamers sur Binance Smart Chain, conçu pour promouvoir le play-to-earn, financer le développement de jeux et renforcer la communauté.",
+      ar: "بيكسل جي هو رمز BEP-20 موجه للاعبين على سلسلة باينانس الذكية، مصمم لدعم اللعب من أجل الربح وتمويل تطوير الألعاب وبناء مجتمع قوي."
+    };
+
+    function setLang(lang) {
+      document.getElementById("description").innerText = descriptions[lang];
+    }
+
+    async function fetchHolders() {
+      try {
+        const response = await fetch('https://api.bscscan.com/api?module=token&action=tokenholdercount&contractaddress=0x600Fd6D03E5ad3C40a8FCf8cb70CdF589F617C8B&apikey=YourApiKey');
+        const data = await response.json();
+        if (data.result) {
+          document.getElementById('holders').innerText = data.result + ' holders';
+        } else {
+          document.getElementById('holders').innerText = 'Could not load data';
+        }
+      } catch (error) {
+        document.getElementById('holders').innerText = 'Error loading holder count';
+      }
+    }
+
+    fetchHolders();
+  </script>
+</body>
+</html>
